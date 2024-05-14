@@ -51,29 +51,6 @@ module.exports.updateStudent = (req, res) => {
         });
 };
 
-module.exports.getStudentById = async (req, res) => {
-    const { id } = req.params;
-    try {
-        // Validate the ID format
-        const mongoose = require('mongoose');
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(400).json({ error: 'Invalid ID format' });
-        }
-
-        // Find the student by ID
-        const student = await Student.findById(id);
-        if (!student) {
-            return res.status(404).json({ error: 'Student not found' });
-        }
-
-        // Return the student data
-        res.status(200).json(student);
-    } catch (err) {
-        console.error('Error fetching student:', err);
-        res.status(500).json({ error: 'Failed to fetch student' });
-    }
-};
-
 module.exports.deleteStudent = (req, res) => {
     const { id } = req.params;
     Student.findByIdAndDelete(id)

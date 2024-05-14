@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const departmentRoute = require('./routes/DepartmentRoute');
-const taskRoute = require('./routes/TaskRoute')
 const adminRoutes = require('./routes/AdminRoutes')
 const studentRoutes = require('./routes/StudentRoute')
 const teacherRoutes = require('./routes/TeacherRoute')
@@ -33,7 +32,6 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 // Routes
 app.use('/', departmentRoute);
-app.use('/api', taskRoute);
 app.use('/admin', adminRoutes);
 app.use('/student', studentRoutes);
 app.use('/teacher', teacherRoutes);
